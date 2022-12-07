@@ -18,8 +18,9 @@ Usuario.init({
     {
         sequelize: sequelizeCon,
         schema: 'public',
-        modelName: 'usuario'
+        modelName: 'usuarios'
     });
 
+Usuario.sync();
 
 module.exports = { Usuario };

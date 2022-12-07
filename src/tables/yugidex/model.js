@@ -9,12 +9,12 @@ Yugidex.init({
     ativo: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
-    },
+    }
 },
     {
         sequelize: sequelizeCon,
         schema: 'public',
-        modelName: 'dex'
+        modelName: 'dexes'
     });
 
     Yugidex.belongsTo(Usuario, {
@@ -23,17 +23,17 @@ Yugidex.init({
     });
 
     Yugidex.belongsToMany(Cartas, { 
-        through: yugidexcartas,
+        through: 'yugidexcartas',
         onDelete: 'cascade',
         onUpdate: 'cascade'
-     });
+    });
 
     Cartas.belongsToMany(Yugidex, { 
-        through: yugidexcartas,
+        through: 'yugidexcartas',
         onDelete: 'cascade',
         onUpdate: 'cascade'
-     })
+    });
 
-    
+Yugidex.sync();
 
 module.exports = { Yugidex };

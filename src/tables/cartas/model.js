@@ -1,5 +1,4 @@
 const { DataTypes, Model } = require('sequelize');
-
 const { sequelizeCon } = require('../../config/db-connection');
 
 class Cartas extends Model { }
@@ -23,6 +22,6 @@ Cartas.init({
         modelName: 'cartas'
     });
 
-    
+Cartas.sync();
 
 module.exports = { Cartas };

@@ -3,15 +3,18 @@ const app = express();
 
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//     res.redirect('/yugi');
-// });
+app.get('/', (req, res) => {
+    res.redirect('/yugi');
+});
 
-// const usersRoutes = require('./tables/usuario/routes');
-// app.use('/user', usersRoutes);
+const usersRoutes = require('./tables/usuario/routes');
+app.use('/user', usersRoutes);
 
-// const yugiRoutes = require('./tables/cartas/routes');
-// app.use('/yugidex', yugiRoutes);
+const yugiRoutes = require('./tables/yugidex/routes');
+app.use('/yugidex', yugiRoutes);
+
+const cartasRoutes = require('./tables/cartas/routes');
+app.use('/yugidex', cartasRoutes);
 
 const db = require('./config/db-connection');
 console.log(db);
