@@ -6,6 +6,7 @@ const { sequelizeCon } = require('../../config/db-connection');
 class Yugidex extends Model { }
 
 Yugidex.init({
+    foto: DataTypes.STRING,
     ativo: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
@@ -22,14 +23,7 @@ Yugidex.init({
         onUpdate: 'cascade'
     });
 
-    Yugidex.belongsToMany(Cartas, { 
-        through: 'yugidexcartas',
-        onDelete: 'cascade',
-        onUpdate: 'cascade'
-    });
-
-    Cartas.belongsToMany(Yugidex, { 
-        through: 'yugidexcartas',
+    Yugidex.belongsTo(Cartas, { 
         onDelete: 'cascade',
         onUpdate: 'cascade'
     });

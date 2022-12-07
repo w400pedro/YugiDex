@@ -13,6 +13,27 @@ class UsuariosController {
         let usuarios = await Usuario.findAll();
         return res.json({usuarios: usuarios});
     }
+
+    async searchbyEmailandSenha(req, res) {
+        // fazer o bycript inverso da senha
+        const { email, senha } = req.body;
+        const senhacripto = bcrypt.hashSync(senha, 10)
+        console.log(senhacripto)
+        let usuarios = await this.repository.findOneEmailandSenha(email, senhacripto);
+        return res.json({usuarios: usuarios});
+    }
+
+    async searchbyemail(req, res) {
+        const { email } = req.params;
+        let usuarios = await this.repository.findOneEmail(email);
+        return res.json({usuarios: usuarios});
+    }
+
+    async searchbynome(req, res) {
+        const { nome } = req.params;
+        let usuarios = await this.repository.findOneNome(nome);
+        return res.json({usuarios: usuarios});
+    }
     
     async create(req, res) {
         const { email, senha , nome } = req.body;
@@ -32,9 +53,15 @@ class UsuariosController {
             senha: bcrypt.hashSync(senha, 10)
         });
 
-        const yugidexRepository = new YugidexRepository();
-        yugidexRepository.save({"usuarioEmail" : email});
+        //const yugidexRepository = new YugidexRepository();
+        //yugidexRepository.save({"usuarioEmail" : email});
         return res.status(201).json(user);
+    }
+
+    async softdelete(req, res) {
+        const { email } = req.params;
+        let usuarios = await this.repository.softdelete(email);
+        return res.json({usuarios: usuarios});
     }
 
     async auth(req, res) {

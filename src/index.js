@@ -14,7 +14,7 @@ const yugiRoutes = require('./tables/yugidex/routes');
 app.use('/yugidex', yugiRoutes);
 
 const cartasRoutes = require('./tables/cartas/routes');
-app.use('/yugidex', cartasRoutes);
+app.use('/carta', cartasRoutes);
 
 const db = require('./config/db-connection');
 console.log(db);

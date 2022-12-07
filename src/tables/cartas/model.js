@@ -6,11 +6,11 @@ class Cartas extends Model { }
 Cartas.init({
     nome: DataTypes.STRING,
     tipo: DataTypes.STRING,
+    genero: DataTypes.STRING,
     nivel: DataTypes.STRING,
-    vida: DataTypes.STRING,
+    ataque: DataTypes.STRING,
     defesa: DataTypes.STRING,
     texto: DataTypes.STRING,
-    foto: DataTypes.STRING,
     ativo: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
