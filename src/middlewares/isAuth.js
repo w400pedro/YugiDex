@@ -4,7 +4,7 @@ const isAuth  = (req, res, next) => {
     
     const token = req.headers['authorization'];
     if (!token) {
-        return res.status(407).json({message:  "Sem Permissão"}); 
+        return res.status(401).json({message:  "Sem Permissão"}); 
     }
 
     try {
