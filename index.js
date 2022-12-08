@@ -19,5 +19,5 @@ app.use('/carta', cartasRoutes);
 const db = require('./config/db-connection');
 console.log(db);
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log('Server iniciado na porta '+port));
+const PORT=process.env.PORT || 3001;
+app.listen(PORT,() => console.log(`Iniciado na porta ${PORT}`))
