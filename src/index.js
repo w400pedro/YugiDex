@@ -3,10 +3,6 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.redirect('/yugi');
-});
-
 const usersRoutes = require('./tables/usuario/routes');
 app.use('/user', usersRoutes);
 
@@ -19,4 +15,5 @@ app.use('/carta', cartasRoutes);
 const db = require('./config/db-connection');
 console.log(db);
 
-app.listen(3000, () => console.log("Listening at 3000"));
+const PORT=process.env.PORT || 3001;
+app.listen(PORT,() => console.log(`Iniciado na porta ${PORT}`))
